@@ -4,11 +4,12 @@ const connectDB = require("./config/dbConnection");
 
 const app = express();
 
+//init Middlware to use the body parser
+app.use(express.json({ extended: false }));
+
 //connerct to the dataBase
 connectDB();
 
-//init Middlware to use the body parser
-app.use(express.json({ extended: false }));
 /*
 Routes 
 */
@@ -19,6 +20,7 @@ app.get("/users", (req, res) => res.send("This is the user page ...."));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/profile", require("./routes/api/profile"));
+app.use("/api/users2", require("./routes/api/user2"));
 
 // server listen to the port
 app.listen(PORT, () =>
