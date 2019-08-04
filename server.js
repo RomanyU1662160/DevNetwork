@@ -1,6 +1,7 @@
 const express = require("express");
 const PORT = process.env.PORT || 5000;
 const connectDB = require("./config/dbConnection");
+const auth = require("./middleware/auth");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/users", (req, res) => res.send("This is the user page ...."));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/profile", require("./routes/api/profile"));
+app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/users2", require("./routes/api/user2"));
 
 // server listen to the port
