@@ -1,8 +1,8 @@
-const moongos = require("mongoose");
+const mongoose = require("mongoose");
 
-const Profile = moongos.Schema({
+const ProfileSchema = new mongoose.Schema({
   user: {
-    type: moongos.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
   company: {
@@ -91,16 +91,16 @@ const Profile = moongos.Schema({
     youtube: {
       type: String
     },
-    facebook: {
-      type: String
-    },
     twitter: {
       type: String
     },
-    linkdin: {
+    facebook: {
       type: String
     },
-    instgram: {
+    linkedin: {
+      type: String
+    },
+    instagram: {
       type: String
     }
   },
@@ -108,4 +108,4 @@ const Profile = moongos.Schema({
     type: Date,
     default: Date.now
   }
-}); // end of Schema
+});

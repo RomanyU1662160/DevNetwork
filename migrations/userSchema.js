@@ -18,9 +18,7 @@ const UserSchema = new moongose.Schema({
   avatar: {
     type: String
   },
-  avatar: {
-    type: String
-  },
+
   date: {
     type: Date,
     default: Date.now

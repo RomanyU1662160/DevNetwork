@@ -5,6 +5,7 @@ const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const auth = require("../../middleware/auth");
 
 const router = express.Router();
 
@@ -75,23 +76,89 @@ router.post(
         id: newUser.id
       };
 
+      // await generateJwtToken(payload, jwtSecret);
+
       await jwt.sign(
         payload, // pass the id in the payload
         jwtSecret,
-        { expiresIn: 360000 }, //expires in minutes
+        { expiresIn: 36000 }, //expires in minutes
         (err, token) => {
           //!err ? res.json({ token }) : res.json(err);
           if (err) throw err;
-          res.json({ token });
-          // res.send(token);
+          console.log("token::" + token);
+          return res.json({ token });
         }
       );
-      //await res.send(token);
     } catch (err) {
       console.error(err.message);
       return res.status(500).send("server error..");
     }
   }
 );
+/*
+@route GET   api/users/all
+@desc       GET all users 
+@access      public
+*/
+
+router.get("/all", async (req, res) => {
+  try {
+    const users = await User.find();
+    if (!users) {
+      return res.send("No users found");
+    }
+    return res.json(users);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json(error.message);
+  }
+});
+
+/*
+@route  GET   api/user/:user_id
+@desc      GET user by passing id ni ther url
+@access      public
+*/
+router.get("/:user_id", async (req, res) => {
+  try {
+    console.log("params.user_id::" + req.params.user_id);
+    const user = await User.findOne(req.params.id);
+    console.log("User found :: " + user);
+    if (!user) {
+      return res.status(400).send(" user  not found");
+    }
+    return res.json({ user });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json(error.message);
+  }
+});
+
+/*
+@route  DELETE   api/users/:user_id
+@desc       Delete user by passing id ni ther url
+@access      private
+*/
+
+router.delete("/delete/:id", auth, async (req, res) => {
+  try {
+    console.log("User Id:: " + req.params.id);
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.send(" user  not found");
+    }
+    await User.findOneAndDelete({ _id: req.params.id }, (err, query) => {
+      if (err) {
+        return console.log("error::".err);
+      }
+      console.log("query::".query);
+      return res.json({ msg: "User deleted " });
+    });
+    // console.log(user.email + " ID::");
+  } catch (error) {
+    console.log("error::" + error.message);
+    return res.status(500).json(error.message);
+  }
+});
 
 module.exports = router;
