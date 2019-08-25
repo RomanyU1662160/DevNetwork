@@ -28,6 +28,10 @@ const Post = Schema({
       },
       name: {
         type: String
+      },
+      date: {
+        type: Date,
+        default: Date.now
       }
     }
   ],
@@ -45,8 +49,23 @@ const Post = Schema({
       },
       date: {
         type: Date,
-        date: Date.now
-      }
+        default: Date.now
+      },
+      likes: [
+        {
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: "user"
+          },
+          name: {
+            type: String
+          },
+          date: {
+            type: Date,
+            default: Date.now
+          }
+        }
+      ]
     }
   ]
 });
