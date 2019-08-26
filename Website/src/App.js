@@ -1,11 +1,13 @@
 import React, { Fragment } from "react";
 
 import "./App.css";
-
+import Navbar from "./components/layouts/navbar";
+import Landing from "./components/layouts/landing";
 const App = () => (
   <Fragment>
     <div className='App'>
-      <h1 className='text-info  text-center'> Welcome to DevNetwork</h1>
+      <Navbar></Navbar>
+      <Landing></Landing>
     </div>
   </Fragment>
 );
