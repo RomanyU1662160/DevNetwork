@@ -21,7 +21,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "nodemon": "nodemon server",
-    "node": "node server"
+    "node": "node server",
+    "website": "npm start --prefix website",
+    "dev": "concurrently \"npm run nodemon\"  \"npm run website\" "
   },
   "eslintConfig": {
     "extends": "react-app"
