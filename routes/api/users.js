@@ -18,7 +18,10 @@ router.post(
   "/",
   //1- validation
   [
-    check("name", "Name is required")
+    check("fname", "First Name is required")
+      .not()
+      .isEmpty(),
+    check("lname", "Last Name is required")
       .not()
       .isEmpty(),
     check("email", "The email field is required")

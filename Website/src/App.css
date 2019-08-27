@@ -1,65 +1,32 @@
-html,
-body,
-header,
-.carousel {
-  height: 60vh;
+.App {
+  text-align: center;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 20vmin;
+  pointer-events: none;
 }
 
-@media (max-width: 740px) {
-  html,
-  body,
-  header,
-  .carousel {
-    height: 100vh;
-  }
+.App-header {
+  background-color: #282c34;
+  max-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-@media (min-width: 800px) and (max-width: 850px) {
-  html,
-  body,
-  header,
-  .carousel {
-    height: 100vh;
-  }
+.App-link {
+  color: #61dafb;
 }
 
-@media (min-width: 800px) and (max-width: 850px) {
-  .navbar:not(.top-nav-collapse) {
-    background: #1c2331 !important;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-}
-.view,
-body,
-html {
-  height: 100%;
-}
-@media (max-width: 740px) {
-  .full-page-intro {
-    height: 1000px;
-  }
-}
-.carousel {
-  height: 50%;
-}
-.carousel .carousel-inner,
-.carousel .carousel-inner .active,
-.carousel .carousel-inner .carousel-item {
-  height: 100%;
-}
-@media (max-width: 776px) {
-  .carousel {
-    height: 100%;
-  }
-}
-.navbar {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.page-footer,
-.top-nav-collapse {
-  background-color: #1c2331;
-}
-@media only screen and (max-width: 768px) {
-  .navbar {
-    background-color: #1c2331;
+  to {
+    transform: rotate(360deg);
   }
 }
