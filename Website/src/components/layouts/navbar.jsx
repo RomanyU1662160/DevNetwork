@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class navbar extends Component {
   render() {
     return (
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-        <a className='navbar-brand' href='#'>
-          Navbar
-        </a>
+        <Link className='navbar-brand' to='/'>
+          Dev Network
+        </Link>
         <button
           className='navbar-toggler'
           type='button'
@@ -21,41 +22,39 @@ export class navbar extends Component {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav mr-auto'>
             <li className='nav-item active'>
-              <a className='nav-link' href='#'>
-                Developers <span className='sr-only'>(current)</span>
-              </a>
+              <Link to='/developers' className='nav-link'>
+                {" "}
+                Developers{" "}
+              </Link>
             </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='#'>
-                Register
-              </a>
-            </li>
+
             <li className='nav-item dropdown'>
-              <a
+              <Link
                 className='nav-link dropdown-toggle'
-                href='#'
+                to='/'
                 id='navbarDropdown'
                 role='button'
                 data-toggle='dropdown'
                 aria-haspopup='true'
                 aria-expanded='false'>
                 Dropdown
-              </a>
+              </Link>
               <div className='dropdown-menu' aria-labelledby='navbarDropdown'>
-                <a className='dropdown-item' href='#'>
-                  Action
-                </a>
-                <a className='dropdown-item' href='#'>
-                  Another action
-                </a>
+                <Link className='dropdown-item' to='/register'>
+                  Registrer
+                </Link>
+                <Link className='dropdown-item' to='/login'>
+                  Login
+                </Link>
                 <div className='dropdown-divider'></div>
-                <a className='dropdown-item' href='#'>
-                  Something else here
-                </a>
+                <Link className='dropdown-item' to='developers'>
+                  Developers page
+                </Link>
               </div>
             </li>
           </ul>
-          <form className='form-inline my-2 my-lg-0'>
+
+          <form className='form-inline my-2 my-lg-3 ml-auto'>
             <input
               className='form-control mr-sm-2'
               type='search'
@@ -68,6 +67,20 @@ export class navbar extends Component {
               Search
             </button>
           </form>
+          <ul className='navbar-nav ml-auto'>
+            <li className='nav-item'>
+              <Link to='/login' className='nav-link'>
+                {" "}
+                Login{" "}
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link to='/register' className='nav-link'>
+                {" "}
+                Register{" "}
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
     );

@@ -1,7 +1,11 @@
 const moongose = require("mongoose");
 
 const UserSchema = new moongose.Schema({
-  name: {
+  fname: {
+    type: String,
+    required: true
+  },
+  lname: {
     type: String,
     required: true
   },
