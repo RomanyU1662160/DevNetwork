@@ -83,10 +83,17 @@ const LoginForm = () => {
             Sign in
           </button>
         </form>
+        <div className='alert'>
+          <p className='float-left btn text-info'>
+            Don't have an acoount ?{" "}
+            <Link to='/register' className='btn btn-link '>
+              {" "}
+              Sign up
+            </Link>{" "}
+          </p>
+        </div>
       </div>
-      <div className='alert'>
-        <Link to='/api/users'> Sign up </Link>
-      </div>
+      <div className='alert'></div>
     </Fragment>
   );
 };

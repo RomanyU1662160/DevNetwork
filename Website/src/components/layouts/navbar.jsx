@@ -41,7 +41,7 @@ export class navbar extends Component {
               </Link>
               <div className='dropdown-menu' aria-labelledby='navbarDropdown'>
                 <Link className='dropdown-item' to='/register'>
-                  Registrer
+                  Register
                 </Link>
                 <Link className='dropdown-item' to='/login'>
                   Login

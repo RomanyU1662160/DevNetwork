@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 const Register = () => {
   const [formData, setFormdata] = useState({
     password: "",
@@ -140,9 +142,18 @@ const Register = () => {
               </div>
             </div>
             <button type='submit' className='btn btn-lg btn-info float-right'>
-              Register
+              Sign up
             </button>
           </form>
+          <div className='alert '>
+            <p className='float-left btn text-info'>
+              Already have an acoount ?{" "}
+              <Link to='/login' className='btn btn-link '>
+                {" "}
+                Login
+              </Link>{" "}
+            </p>
+          </div>
         </div>
       </Fragment>
     </div>
