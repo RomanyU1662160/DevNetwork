@@ -17,6 +17,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "redux-saga": "^1.0.5",
     "request": "^2.88.0",
     "typescript-eslint": "^0.0.1-alpha.0"
   },
