@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
-import { setState } from "expect/build/jestMatchersObject";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [formData, setFormdata] = useState({
@@ -83,6 +83,9 @@ const LoginForm = () => {
             Sign in
           </button>
         </form>
+      </div>
+      <div className='alert'>
+        <Link to='/api/users'> Sign up </Link>
       </div>
     </Fragment>
   );
