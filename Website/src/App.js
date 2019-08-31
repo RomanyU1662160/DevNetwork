@@ -9,7 +9,7 @@ import RegisterPage from "./components/auth/Register";
 //Redux & redux-saga staff
 
 import { Provider } from "react-redux";
-import store from "./store2";
+import store from "./store";
 
 const App = () => (
   <Provider store={store}>
