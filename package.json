@@ -1,7 +1,7 @@
 {
-  "name": "devconnector",
+  "name": "devConnector",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
@@ -17,7 +17,8 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "typescript-eslint": "^0.0.1-alpha.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,7 +28,7 @@
     "nodemon": "nodemon server",
     "node": "node server",
     "website": "npm start --prefix website",
-    "dev": "concurrently \"npm run nodemon\"  \"npm run website\" "
+    "dev": "concurrently \"yarn run nodemon\"  \"yarn run website\" "
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,15 +46,12 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "server.js",
   "devDependencies": {
     "concurrently": "^4.1.0",
     "nodemon": "^1.19.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RomanyU1662160/DevNetwork.git"
-  },
+  "repository": "git+https://github.com/RomanyU1662160/DevNetwork.git",
   "author": "Romany",
   "license": "ISC",
   "bugs": {
