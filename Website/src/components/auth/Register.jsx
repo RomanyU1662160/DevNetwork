@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-
+import axios from "axios";
 const Register = () => {
   const [formData, setFormdata] = useState({
     password: "",
@@ -16,13 +16,33 @@ const Register = () => {
   const { fname, lname, password, confirm, email } = formData;
 
   const handleChange = e => {
-    console.log(e.target.value);
+    //console.log(email);
     setFormdata({ ...formData, [e.target.name]: e.target.value });
   };
-  const handlesubmit = e => {
+  const handlesubmit = async e => {
     e.preventDefault();
     if (password !== confirm) {
       return console.log("password not matched ");
+    }
+    const dummyUser = {
+      fname,
+      lname,
+      password,
+      email
+    };
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const body = JSON.stringify(dummyUser);
+      console.log("Body ::" + body);
+      await console.log(body);
+      const res = await axios.post("/api/users", body, config);
+      console.log(res.data);
+    } catch (error) {
+      console.log("Error :: " + error.message);
     }
   };
   return (

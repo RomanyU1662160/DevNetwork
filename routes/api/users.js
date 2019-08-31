@@ -40,7 +40,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     //define the variables from body
-    const { name, email, password } = req.body;
+    const { fname, lname, email, password } = req.body;
 
     //2-see if the user is exist
     try {
@@ -59,7 +59,8 @@ router.post(
       });
       const newUser = new User({
         email,
-        name,
+        fname,
+        lname,
         password,
         avatar
       });
@@ -94,7 +95,7 @@ router.post(
       );
     } catch (err) {
       console.error(err.message);
-      return res.status(500).send("server error..");
+      return res.status(501).send("server error..");
     }
   }
 );

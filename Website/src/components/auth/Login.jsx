@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from "react";
+import axios from "axios";
+import { setState } from "expect/build/jestMatchersObject";
 
 const LoginForm = () => {
   const [formData, setFormdata] = useState({
@@ -9,15 +11,35 @@ const LoginForm = () => {
   const handleChange = e => {
     setFormdata({ ...formData, [e.target.name]: e.target.value });
   };
-  const user = {
-    email,
-    password
-  };
 
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const user = {
+      email,
+      password
+    };
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const body = await JSON.stringify(user);
+      const res = await axios.post("/api/auth", body, config);
+      return console.log(res.data);
+    } catch (error) {
+      console.log("ERROR ::: " + error.message);
+    }
+
+    console.log(user);
+  };
   return (
     <Fragment>
       <div className=' container  mt-5'>
-        <form action='#' method='post' className='col-md-6 offset-md-3 '>
+        <form
+          onSubmit={e => handleSubmit(e)}
+          method='post'
+          className='col-md-6 offset-md-3 '>
           <div className='form-group '>
             <label htmlFor='email' className='text-info'>
               <i className='fas fa-envelope'></i> Email
@@ -27,6 +49,7 @@ const LoginForm = () => {
               name='email'
               type='text'
               className='form-control'
+              value={email}
               onChange={e => handleChange(e)}
             />
           </div>
@@ -38,7 +61,9 @@ const LoginForm = () => {
               id='password'
               name='password'
               type='password'
+              value={password}
               className='form-control'
+              onChange={e => handleChange(e)}
             />
           </div>
           <div className='form-group'>
