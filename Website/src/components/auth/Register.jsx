@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../../actions/alerts";
 
-const Register = () => {
+const Register = props => {
   const [formData, setFormdata] = useState({
     password: "",
     confirm: "",
@@ -16,15 +18,17 @@ const Register = () => {
       : "";
 
   const { fname, lname, password, confirm, email } = formData;
+  const { setAlert } = props;
 
   const handleChange = e => {
     //console.log(email);
     setFormdata({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handlesubmit = async e => {
     e.preventDefault();
     if (password !== confirm) {
-      return console.log("password not matched ");
+      return setAlert("password not matched..", "danger");
     }
     const dummyUser = {
       fname,
@@ -39,8 +43,6 @@ const Register = () => {
         }
       };
       const body = JSON.stringify(dummyUser);
-      console.log("Body ::" + body);
-      await console.log(body);
       const res = await axios.post("/api/users", body, config);
       console.log(res.data);
     } catch (error) {
@@ -147,17 +149,28 @@ const Register = () => {
           </form>
           <div className='alert '>
             <p className='float-left btn text-info'>
-              Already have an acoount ?{" "}
+              Already have an account ?
               <Link to='/login' className='btn btn-link '>
-                {" "}
                 Login
-              </Link>{" "}
+              </Link>
             </p>
           </div>
         </div>
+        <div className='alert'></div>
       </Fragment>
     </div>
   );
 };
 
-export default Register;
+// const mapDispatchToProps = dispatch => ({
+//   setAlert: (msg, alertType) =>
+//     dispatch({ type: "SET_ALERT", alert: { msg, alertType } })
+// });
+
+const mapDispatchToProps = {
+  setAlert
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(Register);
