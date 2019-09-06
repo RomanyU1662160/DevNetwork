@@ -1,29 +1,37 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { setAlert } from "../../actions/alerts";
-import { connect } from "react-redux";
 
-const LoginForm = props => {
+const LoginForm = () => {
   const [formData, setFormdata] = useState({
     email: "",
     password: ""
   });
   const { email, password } = formData;
-  const { setAlert } = props;
   const handleChange = e => {
     setFormdata({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(formData.email);
-    if (!formData.email) {
-      setAlert("Email cannot be null", "danger");
+    const user = {
+      email,
+      password
+    };
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const body = await JSON.stringify(user);
+      const res = await axios.post("/api/auth", body, config);
+      return console.log(res.data);
+    } catch (error) {
+      console.log("ERROR ::: " + error.message);
     }
-    if (!formData.password) {
-      setAlert("Password cannot be null", "danger");
-    }
+
+    console.log(user);
   };
   return (
     <Fragment>
@@ -90,11 +98,4 @@ const LoginForm = props => {
   );
 };
 
-const mapDispatchToProps = {
-  setAlert
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(LoginForm);
+export default LoginForm;

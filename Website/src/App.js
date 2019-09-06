@@ -6,6 +6,7 @@ import Developers from "./components/Developers";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/auth/Login";
 import RegisterPage from "./components/auth/Register";
+import AlertList from "../src/components/layouts/alertList";
 //Redux & redux-saga staff
 
 import { Provider } from "react-redux";
@@ -16,6 +17,7 @@ const App = () => (
     <BrowserRouter>
       <Fragment>
         <Navbar></Navbar>
+        <AlertList></AlertList>
         <div className=' '>
           <Route exact path='/' component={Landing} />
           <div className='container-fluid'>
