@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alerts";
-import { register, registerSuccess } from "../../actions/auth";
 
 const Register = props => {
   const [formData, setFormdata] = useState({
@@ -19,7 +18,7 @@ const Register = props => {
       : "";
 
   const { fname, lname, password, confirm, email } = formData;
-  const { setAlert, register } = props;
+  const { setAlert } = props;
 
   const handleChange = e => {
     //console.log(email);
@@ -31,7 +30,24 @@ const Register = props => {
     if (password !== confirm) {
       return setAlert("password not matched..", "danger");
     }
-    return register(fname, lname, email, password);
+    const dummyUser = {
+      fname,
+      lname,
+      password,
+      email
+    };
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const body = JSON.stringify(dummyUser);
+      const res = await axios.post("/api/users", body, config);
+      console.log(res.data);
+    } catch (error) {
+      console.log("Error :: " + error.message);
+    }
   };
   return (
     <div>
@@ -152,9 +168,7 @@ const Register = props => {
 // });
 
 const mapDispatchToProps = {
-  setAlert,
-  register,
-  registerSuccess
+  setAlert
 };
 export default connect(
   null,
