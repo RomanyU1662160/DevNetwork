@@ -8,6 +8,7 @@ import LoginPage from "./components/auth/Login";
 import RegisterPage from "./components/auth/Register";
 import AlertList from "../src/components/layouts/alertList";
 //Redux & redux-saga staff
+import Spinner from "./components/layouts/spinner";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -18,6 +19,7 @@ const App = () => (
       <Fragment>
         <Navbar></Navbar>
         <AlertList></AlertList>
+        <Spinner></Spinner>
         <div className=' '>
           <Route exact path='/' component={Landing} />
           <div className='container-fluid'>
