@@ -1,10 +1,9 @@
 import React, { Fragment, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alerts";
 import { register, registerSuccess } from "../../actions/auth";
-
+//import { viewSpinner, hideSpinner } from "../../actions/spinner";
 const Register = props => {
   const [formData, setFormdata] = useState({
     password: "",
@@ -22,7 +21,6 @@ const Register = props => {
   const { setAlert, register } = props;
 
   const handleChange = e => {
-    //console.log(email);
     setFormdata({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -31,7 +29,7 @@ const Register = props => {
     if (password !== confirm) {
       return setAlert("password not matched..", "danger");
     }
-    return register(fname, lname, email, password);
+    await register(fname, lname, email, password);
   };
   return (
     <div>

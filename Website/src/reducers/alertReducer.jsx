@@ -11,6 +11,11 @@ const alertReducer = (state = init, action) => {
 
       return { ...state, alerts: state.alerts.concat(action.alert) };
     }
+    case types.HIDE_ALERT: {
+      console.log(`${action.type} is trigeered`);
+
+      return { ...state, alerts: [] };
+    }
     case types.REMOVE_ALERT: {
       console.log(`${action.type} is trigeered`);
       return {

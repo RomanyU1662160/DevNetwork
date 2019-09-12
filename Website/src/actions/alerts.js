@@ -6,6 +6,10 @@ export const removeAlert = id => ({
   id
 });
 
+export const hideAlert = () => ({
+  type: types.HIDE_ALERT
+});
+
 export const setAlert = (msg, alertType) => {
   const id = uuid.v4(),
     alert = {

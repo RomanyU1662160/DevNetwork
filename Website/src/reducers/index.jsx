@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import exampleReducer from "./exampleReducer";
 import alertReducer from "./alertReducer";
 import authReducer from "./authReducers";
+import spinnerReducer from "./spinnerReducer";
 
 const combinedReducers = combineReducers({
-  exampleReducer,
   alertReducer,
-  authReducer
+  authReducer,
+  spinnerReducer
 });
 
 export default combinedReducers;
