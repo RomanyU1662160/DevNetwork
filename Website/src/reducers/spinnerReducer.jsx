@@ -9,7 +9,8 @@ const spinnerReducer = (state = init, action) => {
       console.log(`${action.type} is trigeered`);
       return { ...state, loading: true };
 
-    case types.Hide_SPINNER:
+    case types.HIDE_SPINNER:
+      console.log(`${action.type} is trigeered`);
       return { ...state, loading: false };
     default:
       return state;
