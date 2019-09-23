@@ -1,10 +1,13 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { delay } from "@redux-saga/core/effects";
 import { setAlert } from "../../actions/alerts";
 import { register, registerSuccess } from "../../actions/auth";
+import { spinnerContext } from "../../contexts/SpinnerContext";
 //import { viewSpinner, hideSpinner } from "../../actions/spinner";
 const Register = props => {
+  const { viewSpinner, hideSpinner } = useContext(spinnerContext);
   const [formData, setFormdata] = useState({
     password: "",
     confirm: "",
@@ -29,7 +32,11 @@ const Register = props => {
     if (password !== confirm) {
       return setAlert("password not matched..", "danger");
     }
+    viewSpinner();
     await register(fname, lname, email, password);
+    setTimeout(() => {
+      hideSpinner();
+    }, 4000);
   };
   return (
     <div>

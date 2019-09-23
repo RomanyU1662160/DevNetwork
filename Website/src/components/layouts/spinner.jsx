@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { connect } from "react-redux";
 import { viewSpinner, hideSpinner } from "../../actions/spinner";
+import { spinnerContext } from "../../contexts/SpinnerContext";
 
 const Spinner = props => {
-  const loading = props.loading;
+  const { loading } = useContext(spinnerContext);
+  //const loading = props.loading;
+  useEffect(() => {
+    console.log(loading);
+  });
 
   return (
     <>

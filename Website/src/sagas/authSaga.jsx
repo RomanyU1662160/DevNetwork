@@ -3,7 +3,11 @@ import axios from "axios";
 import types from "../actions/types";
 import { registerSuccess } from "../actions/auth";
 import { setAlert, hideAlert } from "../actions/alerts";
-import { viewSpinner, hideSpinner } from "../actions/spinner";
+import SpinnerContextProvider, {
+  spinnerContext
+} from "../contexts/SpinnerContext";
+
+//import { viewSpinner, hideSpinner } from "../actions/spinner";
 
 function* run(RegisterData) {
   //const RegisterData = yield take("REGISTER");
@@ -18,12 +22,12 @@ function* run(RegisterData) {
     const res = yield axios.post("/api/users", Body, config);
     const resData = res.data; //return the Token from the backend
     console.log(resData);
-    yield put(viewSpinner());
+    // yield put(viewSpinner());
     yield delay(5000);
     yield put(registerSuccess(resData));
     yield put(setAlert("registered", "success"));
-    yield put(hideSpinner());
-    yield delay(3000);
+    // yield put(hideSpinner());
+    yield delay(4000);
     yield put(hideAlert());
     yield localStorage.setItem("token", res.data);
   } catch (error) {

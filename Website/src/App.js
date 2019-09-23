@@ -12,26 +12,29 @@ import Spinner from "./components/layouts/spinner";
 
 import { Provider } from "react-redux";
 import store from "./store";
+import SpinnerContextProvider from "./contexts/SpinnerContext";
 
 const App = () => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <Fragment>
-        <Navbar></Navbar>
-        <AlertList></AlertList>
-        <Spinner></Spinner>
-        <div className=' '>
-          <Route exact path='/' component={Landing} />
-          <div className='container-fluid'>
-            <Switch>
-              <Route exact path='/login' component={LoginPage} />
-              <Route exact path='/register' component={RegisterPage} />
-              <Route exact path='/developers' component={Developers}></Route>
-            </Switch>
+  <SpinnerContextProvider>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Fragment>
+          <Navbar></Navbar>
+          <AlertList></AlertList>
+          <Spinner></Spinner>
+          <div className=' '>
+            <Route exact path='/' component={Landing} />
+            <div className='container-fluid'>
+              <Switch>
+                <Route exact path='/login' component={LoginPage} />
+                <Route exact path='/register' component={RegisterPage} />
+                <Route exact path='/developers' component={Developers}></Route>
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Fragment>
-    </BrowserRouter>
-  </Provider>
+        </Fragment>
+      </BrowserRouter>
+    </Provider>
+  </SpinnerContextProvider>
 );
 export default App;
