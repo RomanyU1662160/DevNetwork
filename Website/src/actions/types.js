@@ -6,7 +6,7 @@ const types = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
   REGISTER_FAIL: "REGISTER_FAIL",
   VIEW_SPINNER: "VIEW_SPINNER",
-  Hide_SPINNER: "Hide_SPINNER"
+  HIDE_SPINNER: "Hide_SPINNER"
 };
 
 export default types;
