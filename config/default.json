@@ -1,5 +1,5 @@
 {
-  "mongoURI": "mongodb+srv://u1662160:1662160@cluster0-2rwme.mongodb.net/test?retryWrites=true&w=majority",
+  "mongoURI": "mongodb+srv://${{username}}:1662160@cluster0-2rwme.mongodb.net/test?retryWrites=true&w=majority",
   "jwtSecret": "RomanySecretToken",
   "githubCliendId": "bf5210353cf18b2bc3af",
   "githubCliendSecret": "e20f83f6633143ddf69267b2ada176231d3ec175"
